@@ -1,8 +1,8 @@
 {
-    "name": "clue/reactphp-ssh-proxy",
+    "name": "swisslearninghub/reactphp-ssh-proxy",
     "description": "Async SSH proxy connector and forwarder, tunnel any TCP/IP-based protocol through an SSH server, built on top of ReactPHP",
     "keywords": ["SSH proxy", "SSH tunnel", "ReactPHP", "async"],
-    "homepage": "https://github.com/clue/reactphp-ssh-proxy",
+    "homepage": "https://github.com/swisslearninghub/reactphp-ssh-proxy",
     "license": "MIT",
     "authors": [
         {
