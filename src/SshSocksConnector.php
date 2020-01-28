@@ -38,9 +38,10 @@ class SshSocksConnector implements ConnectorInterface
      *
      * @param string $uri
      * @param LoopInterface $loop
+     * @param string $privateKeyPath
      * @throws \InvalidArgumentException
      */
-    public function __construct($uri, LoopInterface $loop)
+    public function __construct($uri, LoopInterface $loop, $privateKeyPath = null)
     {
         // URI must use optional ssh:// scheme, must contain host and neither pass nor target must start with dash
         $parts = \parse_url((\strpos($uri, '://') === false ? 'ssh://' : '') . $uri);
@@ -59,6 +60,9 @@ class SshSocksConnector implements ConnectorInterface
         // disable interactive password prompt if no password was given (see sshpass above)
         if ($pass === null) {
             $this->cmd .= '-o BatchMode=yes ';
+            if ($privateKeyPath !== null) {
+                $this->cmd .= '-o IdentitiesOnly=yes -i ' . $privateKeyPath . ' ';
+            }
         }
 
         if (isset($parts['port']) && $parts['port'] !== 22) {
